@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  min_experience: 1
+  camrade_count: 1
+  reserve_count: 1
+  datetime_start: 2012-08-09 12:48:04
+  datetime_end: 2012-08-09 12:48:04
+  completed: false
+  country_id: 1
+  city_id: 1
+  camrade_id: 1
+
+two:
+  title: MyString
+  description: MyText
+  min_experience: 1
+  camrade_count: 1
+  reserve_count: 1
+  datetime_start: 2012-08-09 12:48:04
+  datetime_end: 2012-08-09 12:48:04
+  completed: false
+  country_id: 1
+  city_id: 1
+  camrade_id: 1

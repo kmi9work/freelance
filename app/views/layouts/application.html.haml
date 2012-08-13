@@ -1,0 +1,32 @@
+!!!html
+%html
+  %head
+    %title= yield :title
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .container-fixed
+      #header.row
+        #logo.span4
+          %h1= link_to "Биржа труда", root_path
+          %h5= link_to "Суть времени", root_path
+        #star_div.span2.pull-right
+          = image_tag 'star.jpg', :id => 'star'
+      .row  
+        .navbar
+          .navbar-inner
+            .container
+              %ul{:class => 'nav'}
+                = yield :navbar
+              %ul{:class => 'nav pull-right'}
+                - if camrade_signed_in?
+                  %li=link_to(current_camrade.first_name ? current_camrade.first_name : current_camrade.email, current_camrade)
+                  %li=link_to 'logout', logout_path
+                - else
+                  %li=link_to 'login', login_path
+                  
+      .row  
+        .container
+          = yield
+    

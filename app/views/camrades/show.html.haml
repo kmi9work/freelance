@@ -1,0 +1,38 @@
+%p{id: "notice"}= notice
+
+%p
+  ФИО
+  %strong= "#{@camrade.last_name} #{@camrade.first_name} #{@camrade.middle_name}"
+%p
+  Дата рождения
+  %strong= @camrade.birth_date
+%p
+  Пол
+  %strong= @camrade.sex ? "Мужской" : "Женский"
+
+- if @resumes
+  %h3 Профессиональная деятельность
+  - @resumes.each do |resume|
+    %fieldset
+      %legend= resume.title
+      %p
+        = resume.description
+      %p
+        %strong= resume.scope.name if resume.scope
+        %br
+        - resume.specializations.each do |spec|
+          =spec.name
+          %br
+      / %strong{style: "text-decoration: underline"} Опыт работы
+      /       %br
+      / -# resume.experiences.each do |experience| 
+      /         %p
+      /           %strong Компания
+      /           =# experience.company_name
+      /           %br
+      /           =# "С #{experience.date_start} по #{experience.date_end}"
+      /           %br
+      /           %strong Описание работы: 
+      /           =# experience.description
+      
+= link_to 'Edit', edit_camrade_path(@camrade) 

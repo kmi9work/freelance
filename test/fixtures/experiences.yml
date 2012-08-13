@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date_start: 2012-08-09
+  date_end: 2012-08-09
+  description: MyText
+  position_id: 1
+  company_id: 1
+  resume_id: 1
+
+two:
+  date_start: 2012-08-09
+  date_end: 2012-08-09
+  description: MyText
+  position_id: 1
+  company_id: 1
+  resume_id: 1

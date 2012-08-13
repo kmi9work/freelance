@@ -1,0 +1,816 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.3.5" />
+<title>Проект фриланса СВ</title>
+<style type="text/css">
+/* Debug borders */
+p, li, dt, dd, div, pre, h1, h2, h3, h4, h5, h6 {
+/*
+  border: 1px solid red;
+*/
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+tt {
+  color: navy;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  font-family: sans-serif;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+
+div.sectionbody {
+  font-family: serif;
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+span#author {
+  color: #527bbd;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+span#email {
+}
+span#revision {
+  font-family: sans-serif;
+}
+
+div#footer {
+  font-family: sans-serif;
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+div#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+div#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+div#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.tableblock, div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid silver;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid silver;
+  background: #f4f4f4;
+  padding: 0.5em;
+}
+
+div.quoteblock {
+  padding-left: 2.0em;
+  margin-right: 10%;
+}
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock {
+  padding-left: 2.0em;
+  margin-right: 10%;
+}
+div.verseblock > div.content {
+  white-space: pre;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 2px solid silver;
+}
+
+div.exampleblock > div.content {
+  border-left: 2px solid silver;
+  padding: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+div.imageblock img { border: 1px solid silver; }
+span.image img { border-style: none; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+@media print {
+  div#footer-badges { display: none; }
+}
+
+div#toctitle {
+  color: #527bbd;
+  font-family: sans-serif;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+/* Workarounds for IE6's broken and incomplete CSS2. */
+
+div.sidebar-content {
+  background: #ffffee;
+  border: 1px solid silver;
+  padding: 0.5em;
+}
+div.sidebar-title, div.image-title {
+  color: #527bbd;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 0.0em;
+  margin-bottom: 0.5em;
+}
+
+div.listingblock div.content {
+  border: 1px solid silver;
+  background: #f4f4f4;
+  padding: 0.5em;
+}
+
+div.quoteblock-attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock-content {
+  white-space: pre;
+}
+div.verseblock-attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+
+div.exampleblock-content {
+  border-left: 2px solid silver;
+  padding-left: 0.5em;
+}
+
+/* IE6 sets dynamically generated links as visited. */
+div#toc a:visited { color: blue; }
+</style>
+</head>
+<body>
+<div id="header">
+<h1>Проект фриланса СВ</h1>
+</div>
+<h2 id="_">Целеполагание</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Зачем мы делаем этот сайт?</p></div>
+<div class="paragraph"><p>Основными задачами сайта являются:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Инвентаризация состава СВ. Кто чем может и хочет заниматься. И кто чем занимается/где работает уже сейчас.
+</p>
+</li>
+<li>
+<p>
+Предложение услуг членами СВ, которые они готовы выполнить.
+</p>
+</li>
+<li>
+<p>
+Поиск и приглашение людей на какой-либо разовый проект.
+</p>
+</li>
+<li>
+<p>
+Предложение и поиск постоянной работы участниками СВ.
+</p>
+</li>
+</ul></div>
+</div>
+<h2 id="__2">Контекст</h2>
+<div class="sectionbody">
+<div class="ulist"><div class="title">Целевая аудитория:</div><ul>
+<li>
+<p>
+Члены СВ.
+</p>
+</li>
+<li>
+<p>
+Работники и работодатели вне СВ. (В будущем)
+</p>
+</li>
+</ul></div>
+<div class="ulist"><div class="title">Опыт других проектов:</div><ul>
+<li>
+<p>
+<a href="http://hh.ru">http://hh.ru</a>. Платные услуги для работодателей. Мощный, красивый внешний вид. Отсутствие возможности бесплатной регистрации работодателя и поиска сотрудников.
+</p>
+</li>
+<li>
+<p>
+<a href="http://job.ru">http://job.ru</a> --//--
+</p>
+</li>
+<li>
+<p>
+<a href="http://freelance.ru">http://freelance.ru</a> Одноразовые проекты. Рейтинг, как возможность узнать, насколько качественно работает фрилансер.
+</p>
+</li>
+</ul></div>
+<div class="ulist"><div class="title">Законодательные и другие ограничения:</div><ul>
+<li>
+<p>
+Запрещена публикация личных данных.
+</p>
+</li>
+<li>
+<p>
+Осуществление передачи личных данных может быть осуществлено только внутри СВ. Утечка болезненна.
+</p>
+</li>
+<li>
+<p>
+Заполнять информацию о себе люди будут очень неохотно.
+</p>
+</li>
+<li>
+<p>
+Информация о членах СВ должна предоставляться только для активистов СВ и быть надёжно защищена.
+</p>
+</li>
+</ul></div>
+<div class="ulist"><div class="title">Решение последней проблемы:</div><ul>
+<li>
+<p>
+За добавление на сайт активистов СВ отвечают координаторы ячеек.
+</p>
+</li>
+<li>
+<p>
+Обязательно использование https.
+</p>
+</li>
+<li>
+<p>
+Сложность пароля должна проверяться.
+</p>
+</li>
+<li>
+<p>
+Система быстрой блокировки аккаунта при краже пароля по смс или ещё как-то.
+</p>
+</li>
+<li>
+<p>
+[Возможно] Проверка секретного слова при посещении с другого компьютера.
+</p>
+</li>
+</ul></div>
+</div>
+<h2 id="__3">Концепция сайта</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Основной смысл сайта&#8201;&#8212;&#8201;сбор информации о людях в СВ.</p></div>
+<div class="paragraph"><p>Также сайт является площадкой, где участники СВ(камрады) могут предлагать свои услуги, набирать людей на проекты и обмениваться предложениями постоянной работы.</p></div>
+<div class="paragraph"><p>Услуга&#8201;&#8212;&#8201;это вид деятельности, которую готов осуществить камрад. Есть только комментирование и получение контактов камрада.</p></div>
+<div class="paragraph"><p>Проект&#8201;&#8212;&#8201;предлагается камрадом, имеет возможность комментирования и отклика/подтвержения участников и запасных.</p></div>
+<div class="paragraph"><p>Постоянная работа&#8201;&#8212;&#8201;работа на постоянной основе. Предлагается либо участником СВ(бесплатно) либо сторонней фирмой(за деньги).</p></div>
+<div class="paragraph"><p>Так же сайт предоставляет возможность поиска камрадов по разнообразным критериям. Поиска проектов и услуг. В основном между камрадами.</p></div>
+<div class="ulist"><div class="title">Монетизация:</div><ul>
+<li>
+<p>
+Платные услуги для работодателей вне СВ.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><div class="title">Развитие идеи сайта</div><p>Много разных путей. От введения системы повышения квалификации, до включения проекта в какую-то общую систему проектов СВ, т.е. создание по сути альтернативного интернета.</p></div>
+</div>
+<h2 id="__4">Моделирование сайта</h2>
+<div class="sectionbody">
+<h3 id="__5">Функциональная часть модели(Возможности)</h3><div style="clear:left"></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Камрад может заполнить информацию о себе, в том числе резюме. И желательно, чтобы он это сделал.
+</p>
+</li>
+<li>
+<p>
+(Только для активистов СВ) Поиск участников.
+</p>
+</li>
+<li>
+<p>
+Возможность добавления нового проекта. (Только для активистов СВ) И поиск участников на этот проект с возможностью отправить им всем или части из них приглашения.
+</p>
+</li>
+<li>
+<p>
+Поиск проектов и отклик на них.
+</p>
+</li>
+<li>
+<p>
+Возможность добавления новой услуги.
+</p>
+</li>
+<li>
+<p>
+Поиск услуг.
+</p>
+</li>
+<li>
+<p>
+Возможность добавления вакансии.
+</p>
+</li>
+<li>
+<p>
+Поиск вакансий и отклик на них.
+</p>
+</li>
+</ul></div>
+<h3 id="__6">Информационная структура</h3><div style="clear:left"></div>
+<h4 id="__7">Разделы</h4>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Главная(выведены основные проекты, вакансии и услуги)
+</p>
+</li>
+<li>
+<p>
+Личный кабинет(просмотр и редактирование информации о себе).
+</p>
+</li>
+<li>
+<p>
+Добавление
+</p>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+Услуги
+</p>
+</li>
+<li>
+<p>
+Проекта
+</p>
+</li>
+<li>
+<p>
+Вакансии
+</p>
+</li>
+</ol></div>
+</li>
+<li>
+<p>
+Поиск
+</p>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+Камрада
+</p>
+</li>
+<li>
+<p>
+Услуг
+</p>
+</li>
+<li>
+<p>
+Вакансии
+</p>
+</li>
+<li>
+<p>
+Проекта
+</p>
+</li>
+</ol></div>
+</li>
+<li>
+<p>
+Отправка сообщения пользователю
+</p>
+</li>
+</ol></div>
+<h4 id="__8">Подробное описание каждого раздела</h4>
+<div class="paragraph"><div class="title">Главная</div><p>Разделена на три раздела. Услуги проекты и вакансии.</p></div>
+<div class="paragraph"><p>Для неавторизованного пользователя имеются кнопки входа и поиска по услугам, проектам и вакансиям.</p></div>
+<div class="paragraph"><p>Для авторизованного&#8201;&#8212;&#8201;кнопки "личный кабинет", добавление услуги проекта или вакансии и поиск(+ по камрадам).</p></div>
+<div class="paragraph"><div class="title">Личный кабинет</div><p>Вывод всех данных о камраде. Включают в себя:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+ФИО
+</p>
+</li>
+<li>
+<p>
+Дата рождения
+</p>
+</li>
+<li>
+<p>
+Пол
+</p>
+</li>
+<li>
+<p>
+Фото
+</p>
+</li>
+<li>
+<p>
+e-mail (Используется как логин)
+</p>
+</li>
+<li>
+<p>
+Пароль
+</p>
+</li>
+<li>
+<p>
+Контакты
+</p>
+</li>
+<li>
+<p>
+Страна, город
+</p>
+</li>
+<li>
+<p>
+Данные о профессиональной деятельности камрада.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Так же есть возможность редактирования и удаления данных.</p></div>
+<div class="paragraph"><div class="title">Добавление услуги</div><p>Форма ввода информации об услуге. Включает в себя:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Заголовок
+</p>
+</li>
+<li>
+<p>
+Описание
+</p>
+</li>
+<li>
+<p>
+Страна, город
+</p>
+</li>
+<li>
+<p>
+Теги
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><div class="title">Добавление проекта</div><p>Форма ввода информации о проекте. Включает в себя:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Заголовок
+</p>
+</li>
+<li>
+<p>
+Описание
+</p>
+</li>
+<li>
+<p>
+Время начала проекта
+</p>
+</li>
+<li>
+<p>
+Время окончания проекта
+</p>
+</li>
+<li>
+<p>
+Желательное число участников
+</p>
+</li>
+<li>
+<p>
+Число запасных участников
+</p>
+</li>
+<li>
+<p>
+Страна, город
+</p>
+</li>
+<li>
+<p>
+Подходящие специализации для проекта
+</p>
+</li>
+<li>
+<p>
+Подходящие области специализации
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><div class="title">Добавление вакансии</div><p>Форма ввода информации о вакансии. Включает в себя:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Заголовок
+</p>
+</li>
+<li>
+<p>
+Описание
+</p>
+</li>
+<li>
+<p>
+Заработная плата
+</p>
+</li>
+<li>
+<p>
+Минимальный опыт работы в области
+</p>
+</li>
+<li>
+<p>
+Страна, город
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><div class="title">Поиск</div><p>Есть два варианта. Либо поиск по параметрам, которые задаются на этапе ввода сущности(расширенный поиск), либо поиск по ключевым словам(пока не очень понимаю как реализовать).</p></div>
+<div class="paragraph"><div class="title">Отправка сообщения пользователю</div><p>Форма отправки сообщения. Содержит поле ввода сообщения.</p></div>
+<h4 id="__9">Схема навигации</h4>
+<div class="paragraph"><p>Кривовато, но вроде понятно.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="activity.png" alt="Схема навигации" title="Схема навигации" />
+</span></p></div>
+<h4 id="__10">Диаграмма классов</h4>
+<div class="paragraph"><p>resume нужно рассматривать не как классическое резюме, а как неотъемлемую часть пользователя. Т.е. таблица resume, если заполнена, будет отображаться на странице личного кабинета.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="class_diag.png" alt="Диаграмма классов" title="Диаграмма классов" />
+</span></p></div>
+<h3 id="__11">Используемые технологии</h3><div style="clear:left"></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Ruby on Rails
+</p>
+</li>
+<li>
+<p>
+HTTPS
+</p>
+</li>
+<li>
+<p>
+PostgreSQL(на первое время JustOneDB)
+</p>
+</li>
+</ul></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2012-08-07 23:30:30 MSK
+</div>
+</div>
+</body>
+</html>

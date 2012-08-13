@@ -1,0 +1,32 @@
+=content_for :navbar do
+  %li
+    =link_to 'Камрады', camrades_path
+  %li{:class => 'active'}
+    =link_to 'Услуги', services_path
+  %li
+    =link_to 'Проекты', projects_path
+
+%h1 Услуги
+
+%hr
+
+.row
+  .span6
+    #search
+      = text_field_tag :search, "service"
+      %br
+      = link_to 'Расширенный поиск', '/'
+    #results
+      Результаты:
+      %br
+      1, 2, 3, ...
+  .span6
+    - @services.each do |service| 
+      .row
+        .span
+          = service.title
+          = link_to 'Show', service
+          = link_to 'Edit', edit_service_path(service)
+          = link_to 'Destroy', service, confirm: 'Are you sure?', method: :delete
+
+    = link_to 'New Service', new_service_path

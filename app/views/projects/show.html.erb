@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @project.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @project.description %>
+</p>
+
+<p>
+  <b>Min experience:</b>
+  <%= @project.min_experience %>
+</p>
+
+<p>
+  <b>Camrade count:</b>
+  <%= @project.camrade_count %>
+</p>
+
+<p>
+  <b>Reserve count:</b>
+  <%= @project.reserve_count %>
+</p>
+
+<p>
+  <b>Datetime start:</b>
+  <%= @project.datetime_start %>
+</p>
+
+<p>
+  <b>Datetime end:</b>
+  <%= @project.datetime_end %>
+</p>
+
+<p>
+  <b>Completed:</b>
+  <%= @project.completed %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @project.country_id %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @project.city_id %>
+</p>
+
+<p>
+  <b>Camrade:</b>
+  <%= @project.camrade_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

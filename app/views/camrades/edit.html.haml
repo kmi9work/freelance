@@ -1,0 +1,30 @@
+%p{id: "notice"}= notice
+
+=form_for @camrade do |f| 
+  .field
+    = f.label :first_name, "Имя"
+    = f.text_field :first_name
+  .field
+    = f.label :last_name, "Фамилия"
+    = f.text_field :last_name
+  .field
+    = f.label :middle_name, "Отчество"
+    = f.text_field :middle_name
+  .field
+    = f.label :birth_date, "Дата рождения"
+    = f.text_field :birth_date, class: "date_field"
+  .field
+    = f.label :sex, "Пол"
+    = f.select :sex, [["Мужской", true], ["Женский", false]]
+  %h3 Профессиональная деятельность
+  %p
+    - if @camrade.resumes
+      - @camrade.resumes.each do |resume|
+        - @resume = resume
+        = f.fields_for(:resumes, @resume) do |builder|
+          = render 'resume_fields', f: builder
+          
+    =link_to_add_fields "Добавить резюме", f, :resumes
+  
+  = f.submit "Готово"  
+  

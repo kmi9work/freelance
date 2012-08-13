@@ -1,0 +1,20 @@
+.resume_field
+  %fieldset
+    = f.label :title, "Заголовок"
+    = f.text_field :title
+    = f.label :description, "Описание"
+    = f.text_area :description, cols: 20, rows: 2
+    = f.hidden_field :_destroy
+    = f.label :scope_id, "Область специализации"
+    = f.select :scope_id, @scopes.map{|s| [s.name, s.id]}, {include_blank: true}, {class: "resume_scopes"}
+    = f.label :specialization_names, ""
+    = f.text_field :specialization_names, data: {autocomplete_source: specializations_path}, class: "specialization_names"
+    %br
+    / -# if @resume.experiences
+    /       -# @resume.experiences.each do |experience|
+    /         =# f.fields_for :experiences, experience do |builder|
+    /           =# render 'experience_fields', f: builder
+    /=# link_to_add_fields "Добавить опыт работы", f, :experiences
+      
+    = link_to 'Удалить резюме', '#', class: 'remove_resume_fields'
+  = link_to 'Восстановить резюме', '#', class: 'return_resume_fields', style: "display: none;"
