@@ -6,27 +6,42 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .container-fixed
-      #header.row
+    .container-fluid
+      #header.row-fluid
         #logo.span4
           %h1= link_to "Биржа труда", root_path
           %h5= link_to "Суть времени", root_path
         / #star_div.span2.pull-right
         /           = image_tag 'star.jpg', :id => 'star'
-      .row  
+      .row-fluid
         .navbar
           .navbar-inner
-            .container
+            .container-fluid
               %ul{:class => 'nav'}
-                = yield :navbar
+                - if content_for?(:navbar) 
+                  =yield(:navbar)
+                -else
+                  %li
+                    =link_to 'Камрады', camrades_path
+                  %li
+                    =link_to 'Услуги', services_path
+                  %li
+                    =link_to 'Проекты', projects_path
               %ul{:class => 'nav pull-right'}
                 - if camrade_signed_in?
-                  %li=link_to(current_camrade.first_name ? current_camrade.first_name : current_camrade.email, current_camrade)
-                  %li=link_to 'logout', logout_path
+                  - (count = current_camrade.unread_messages_count)
+                  %li{class: 'unread'}
+                    - if count > 0
+                      =link_to raw("<strong>#{count.to_s}</strong> messages"), camrade_show_messages_path(current_camrade)
+                    - else
+                      =link_to "#{count.to_s} messages", camrade_show_messages_path(current_camrade)
+                    
+                  %li= link_to(current_camrade.first_name ? current_camrade.first_name : current_camrade.email, current_camrade)
+                  %li= link_to 'logout', logout_path
                 - else
-                  %li=link_to 'login', login_path
+                  %li= link_to 'login', login_path
                   
-      .row  
-        .container
+      .row-fluid
+        .container-fluid{style: "padding: 0px 20px"}
           = yield
     

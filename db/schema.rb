@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120809093253) do
+ActiveRecord::Schema.define(:version => 20120815083250) do
 
   create_table "camrades", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -90,6 +90,16 @@ ActiveRecord::Schema.define(:version => 20120809093253) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "messages", :force => true do |t|
+    t.text     "content"
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.boolean  "unread",     :default => true
+    t.integer  "parent_id"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "positions", :force => true do |t|

@@ -1,0 +1,17 @@
+%p{id: "notice"}= notice
+
+%h2= @message.from.name
+
+= @message.content
+
+=form_for @answer do |f|
+  = f.label :content, "Написать ответ"
+  = f.text_area :content
+  = f.hidden_field :from_id, value: @camrade.id
+  = f.hidden_field :to_id, value: @message.from.id
+  = f.hidden_field :parent_id, value: @message.id
+  = f.submit "Отправить"
+  
+%h2 Предыстория
+- if @message.parent
+  = render 'parent', parent: @message.parent

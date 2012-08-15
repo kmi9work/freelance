@@ -13,9 +13,15 @@ EotFreelance::Application.routes.draw do
   
   resources :camrades do
     resource :resume
+    get 'show_messages'
   end
   resources :companies, only: [:index]
+  resources :messages, only: [:show, :create]
+  
   match 'specializations/(:scope_id)' => 'specializations#index', as: :specializations
+  match 'project/:id/add_scope' => 'projects#add_specialization', as: :project_add_specialization
+  match 'project/:id/add_specialization' => 'projects#add_specialization', as: :project_add_specialization
+  
   match 'resume/:id/specialization/:specialization_id/delete' => 'resumes#delete_resume_specialization', as: :delete_resume_specialization
   root to: 'welcome#index'
 end

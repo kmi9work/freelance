@@ -41,6 +41,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
+    @project.camrade = current_camrade
 
     respond_to do |format|
       if @project.save
@@ -79,5 +80,13 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url }
       format.json { head :no_content }
     end
+  end
+  
+  def add_scopes
+    @project = Project.find(params[:id])
+  end
+  
+  def add_specializations
+    @project = Project.find(params[:id])
   end
 end

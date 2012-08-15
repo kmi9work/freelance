@@ -4,8 +4,14 @@ class CamradesController < ApplicationController
   end
   
   def show
-    @camrade = Camrade.find(params[:id])
+    @camrade = Camrade.find(params[:id]) || current_camrade
     @resumes = @camrade.resumes
+  end
+  
+  def show_messages
+    @camrade = Camrade.find(params[:camrade_id]) || current_camrade
+    @messages = @camrade.messages.order('id desc')
+    @sents = @camrade.sents
   end
   
   def edit

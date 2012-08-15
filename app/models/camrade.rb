@@ -11,6 +11,9 @@ class Camrade < ActiveRecord::Base
   belongs_to :country
   belongs_to :city
   
+  has_many :messages, :class_name => "Message", :foreign_key => "to_id"
+  has_many :sents, :class_name => "Message", :foreign_key => "from_id"
+  
   accepts_nested_attributes_for :resumes, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
   
   
@@ -19,4 +22,12 @@ class Camrade < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+         
+  def name
+    name = self.first_name.to_s + " " + self.last_name.to_s
+    name.blank? ? self.email : name
+  end
+  def unread_messages_count
+    self.messages.where(unread: true).count
+  end
 end

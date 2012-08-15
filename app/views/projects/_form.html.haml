@@ -9,11 +9,9 @@
 
   .field
     = f.label :title, "Название"
-    %br
     = f.text_field :title, class: "input-400"
   .field
     = f.label :description, "Описание"
-    %br
     = f.text_area :description, rows: 4, class: "input-400"
   / .field
   /   =# f.label :min_experience
@@ -23,21 +21,17 @@
     %legend Необходимое количество камрадов
     .field{class: "inline"}
       = f.label :camrade_count, "Всего"
-      %br
       = f.number_field :camrade_count, class: "input-small"
     .field{class: "inline"}
       = f.label :reserve_count, "Прозапас"
-      %br
       = f.number_field :reserve_count, class: "input-small"
   .fieldset
     %legend Временные рамки проекта
     .field{class: "inline"}
       = f.label :datetime_start, "Начало проекта"
-      %br
       = f.text_field :datetime_start, class: "datetime input-medium", value: @project.datetime_start ? @project.datetime_start.strftime("%d.%m.%Y %H:%M") : ""
     .field{class: "inline"}
       = f.label :datetime_end, "Окончание проекта"
-      %br
       = f.text_field :datetime_end, class: "datetime input-medium", value: @project.datetime_end ? @project.datetime_end.strftime("%d.%m.%Y %H:%M") : ""
   / .field
   /     = f.label :country_id

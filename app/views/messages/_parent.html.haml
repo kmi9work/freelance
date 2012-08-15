@@ -1,0 +1,5 @@
+%strong= parent.from.name + ":"
+= parent.content
+%br
+- if parent.parent
+  = render 'parent', parent: parent.parent

@@ -1,0 +1,26 @@
+%p{id: "notice"}= notice
+
+%h2 Принятые сообщения
+- @messages.each do |message|
+  .row-fluid.message{class: "#{if message.unread then "unread" end}"}
+    .span2
+      %strong= link_to message.from.name, camrade_path(message.from)
+    .span6
+      - if message.content
+        - if message.content.size > 127
+          = link_to message.content[0..127] + "...",  message
+        -else
+          = link_to message.content, message
+    
+  
+%h2 Отправленные сообщения
+- @sents.each do |sent|
+  .row-fluid.message{class: "#{if sent.unread then "unread" end}"}
+    .span2
+      %strong= link_to sent.from.name, camrade_path(sent.from)
+    .span6
+      - if sent.content
+        - if sent.content.size > 127
+          = link_to sent.content[0..127] + "...",  sent
+        -else
+          = link_to sent.content, sent

@@ -1,6 +1,10 @@
 %p{id:"notice"}= notice
 
 %h1= @project.title
+.label
+  %author= @project.camrade.name
+  |
+  %time= @project.created_at.strftime("%M:%H %d.%m.%Y")
 
 %p= @project.description
 
@@ -18,25 +22,27 @@
   = humanize_date_range @project.datetime_start, @project.datetime_end
 
 
-%p
-  <b>Completed:
-  = @project.completed
 
 
-%p
-  <b>Country:
-  = @project.country_id
-
-
-%p
-  <b>City:
-  = @project.city_id
-
-
-%p
-  <b>Camrade:
-  = @project.camrade_id
-
+/ %p
+/   <b>Completed:
+/   = @project.completed
+/ 
+/ 
+/ %p
+/   <b>Country:
+/   = @project.country_id
+/ 
+/ 
+/ %p
+/   <b>City:
+/   = @project.city_id
+/ 
+/ 
+/ %p
+/   <b>Camrade:
+/   = @project.camrade_id
+/ 
 
 
 = link_to 'Edit', edit_project_path(@project) |
