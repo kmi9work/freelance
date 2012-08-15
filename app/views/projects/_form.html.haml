@@ -34,11 +34,11 @@
     .field{class: "inline"}
       = f.label :datetime_start, "Начало проекта"
       %br
-      = f.text_field :datetime_start, class: "datetime input-medium", value: @project.datetime_start.strftime("%d.%m.%Y %H:%M")
+      = f.text_field :datetime_start, class: "datetime input-medium", value: @project.datetime_start ? @project.datetime_start.strftime("%d.%m.%Y %H:%M") : ""
     .field{class: "inline"}
       = f.label :datetime_end, "Окончание проекта"
       %br
-      = f.text_field :datetime_end, class: "datetime input-medium", value: @project.datetime_end.strftime("%d.%m.%Y %H:%M")
+      = f.text_field :datetime_end, class: "datetime input-medium", value: @project.datetime_end ? @project.datetime_end.strftime("%d.%m.%Y %H:%M") : ""
   / .field
   /     = f.label :country_id
   /     %br
