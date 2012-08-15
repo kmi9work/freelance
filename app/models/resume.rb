@@ -11,7 +11,7 @@ class Resume < ActiveRecord::Base
   accepts_nested_attributes_for :scope
   
   def specialization_names
-    specializations.map{|s| s.try(:name)}.join(", ")
+    # specializations.map{|s| s.try(:name)}.join(", ")
   end
   def specialization_names= str
     if str.present?

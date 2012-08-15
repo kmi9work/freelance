@@ -6,16 +6,14 @@
   %li{:class => 'active'}
     =link_to 'Проекты', projects_path
 
-%h1 Проекты
-
-%table
-  %tr
-    %th Title
-  - @projects.each do |project| 
-    %tr
-      %td= project.title
-      %td= link_to 'Show', project
-      %td= link_to 'Edit', edit_project_path(project)
-      %td= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete
-
 = link_to 'New Project', new_project_path
+
+%h1 Проекты
+- @projects.each do |project| 
+  %fieldset
+    = project.title
+    = link_to 'Show', project
+    = link_to 'Edit', edit_project_path(project)
+    = link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete
+
+

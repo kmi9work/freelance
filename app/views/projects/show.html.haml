@@ -1,0 +1,43 @@
+%p{id:"notice"}= notice
+
+%h1= @project.title
+
+%p= @project.description
+
+%fieldset
+  %legend Необходимое количество участников
+  Всего: 
+  = @project.camrade_count
+  
+  Запасных:
+  = @project.reserve_count
+
+
+%fieldset
+  %legend Временные рамки проекта
+  = humanize_date_range @project.datetime_start, @project.datetime_end
+
+
+%p
+  <b>Completed:
+  = @project.completed
+
+
+%p
+  <b>Country:
+  = @project.country_id
+
+
+%p
+  <b>City:
+  = @project.city_id
+
+
+%p
+  <b>Camrade:
+  = @project.camrade_id
+
+
+
+= link_to 'Edit', edit_project_path(@project) |
+= link_to 'Back', projects_path

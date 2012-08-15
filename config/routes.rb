@@ -16,6 +16,6 @@ EotFreelance::Application.routes.draw do
   end
   resources :companies, only: [:index]
   match 'specializations/(:scope_id)' => 'specializations#index', as: :specializations
-  
+  match 'resume/:id/specialization/:specialization_id/delete' => 'resumes#delete_resume_specialization', as: :delete_resume_specialization
   root to: 'welcome#index'
 end

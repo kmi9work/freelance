@@ -39,17 +39,17 @@ options =
     terms.push ""
     @value = terms.join(", ")
     false
+  minLength: 0
       
 reactivate_on_resume_add = ->
-  $('.date_field').livequery ->
-    $(this).datepicker
-      showOn: 'button'
-      buttonImage: '/assets/calendar.gif'
-      buttonImageOnly: true
-      dateFormat: 'dd.mm.yy'
-      changeMonth: true
-      changeYear: true
-      yearRange: "1900:2012"
+  $('.date_field').datepicker
+    showOn: 'button'
+    buttonImage: '/assets/calendar.gif'
+    buttonImageOnly: true
+    dateFormat: 'dd.mm.yy'
+    changeMonth: true
+    changeYear: true
+    yearRange: "1900:2012"
   
   for select in $('.resume_scopes')
     $(select).on 'change', ->
@@ -57,7 +57,8 @@ reactivate_on_resume_add = ->
       $(this).siblings('.specialization_names').attr('value', '')
       options.source = (request, response) ->
         $.getJSON "/specializations/#{scope_id}", {term: extractLast(request.term)}, response
-      $(this).siblings('.specialization_names').autocomplete options
+      $(this).siblings('.specialization_names').catcomplete(options).focus ->
+        $(this).catcomplete("search", '')
 
 jQuery ->
   reactivate_on_resume_add()
@@ -65,7 +66,7 @@ jQuery ->
   for input in $('.specialization_names')
     $(input).bind("keydown", (event) ->
       event.preventDefault()  if event.keyCode is $.ui.keyCode.TAB and $(this).data("autocomplete").menu.active
-    ).autocomplete options
+    ).catcomplete options
       
   $('form').on 'click', '.return_resume_fields', (event) ->
     $(this).prev('fieldset').children('input[type=hidden]').val('0')
@@ -86,13 +87,13 @@ jQuery ->
     reactivate_on_resume_add
     event.preventDefault()
 
-# 
-# $.widget "custom.catcomplete", $.ui.autocomplete,
-#   _renderMenu: (ul, items) ->
-#     self = this
-#     currentCategory = ""
-#     $.each items, (index, item) ->
-#       unless item.category is currentCategory
-#         ul.append "<li class='ui-autocomplete-category'>#{item.category}</li>"
-#         currentCategory = item.category
-#       self._renderItem ul, item
+
+$.widget "custom.catcomplete", $.ui.autocomplete,
+  _renderMenu: (ul, items) ->
+    self = this
+    currentCategory = ""
+    $.each items, (index, item) ->
+      unless item.category is currentCategory
+        ul.append "<li class='ui-autocomplete-category'>#{item.category}</li>"
+        currentCategory = item.category
+      self._renderItem ul, item

@@ -1,3 +1,12 @@
+=content_for :navbar do
+  %li
+    =link_to 'Камрады', camrades_path
+  %li
+    =link_to 'Услуги', services_path
+  %li
+    =link_to 'Проекты', projects_path
+
+
 %p{id: "notice"}= notice
 
 %p

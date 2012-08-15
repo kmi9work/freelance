@@ -5,9 +5,15 @@
     = f.label :description, "Описание"
     = f.text_area :description, cols: 20, rows: 2
     = f.hidden_field :_destroy
-    = f.label :scope_id, "Область специализации"
+    = f.label :scope_id, "Область"
     = f.select :scope_id, @scopes.map{|s| [s.name, s.id]}, {include_blank: true}, {class: "resume_scopes"}
-    = f.label :specialization_names, ""
+    = f.label :specialization_names, "Специализации"
+    - if @resume
+      - @resume.specializations.each do |spec|
+        %div{id: "delete_resume_#{@resume.id}_specialization_#{spec.id}"}
+          = spec.name
+          = link_to 'x', delete_resume_specialization_path(@resume.id, spec.id), remote: true
+          %br
     = f.text_field :specialization_names, data: {autocomplete_source: specializations_path}, class: "specialization_names"
     %br
     / -# if @resume.experiences
