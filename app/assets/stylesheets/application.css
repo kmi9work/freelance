@@ -58,6 +58,10 @@ legend{
   background: #bbb;
 }
 
+.checkbox{
+  margin-left: 10px;
+}
+
 .ui-autocomplete {
 	max-height: 314px;
 	overflow-y: auto;

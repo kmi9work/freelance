@@ -1,5 +1,5 @@
 class Resume < ActiveRecord::Base
-  attr_accessible :camrade_id, :description, :title, :experiences_attributes, :specialization_names, :scope_id
+  attr_accessible :camrade_id, :description, :title, :experiences_attributes, :specialization_names, :scope_id, :specialization_ids
   
   belongs_to :camrade
   has_many :language_levels, uniq: true
@@ -20,5 +20,14 @@ class Resume < ActiveRecord::Base
         self.specializations << Specialization.find_or_create_by_name(s) 
       end
     end
+  end
+  def specialization_ids= ids
+    ids.each do |id|
+      self.specializations << Specialization.find(id) unless id.blank?
+    end
+  end
+  
+  def specialization_ids
+    self.specializations.map(&:id)
   end
 end

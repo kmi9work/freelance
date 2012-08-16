@@ -3,5 +3,6 @@ class Scope < ActiveRecord::Base
   has_many :specializations
   has_many :companies
   has_many :resumes
-  has_and_belongs_to_many :projects
+  has_many :project_scopes
+  has_many :projects, through: :project_scopes
 end

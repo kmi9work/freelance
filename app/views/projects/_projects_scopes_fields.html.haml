@@ -1,0 +1,4 @@
+%fieldset
+  = f.select :scope_id, options_from_collection_for_select(@scopes, "id", "name"), {include_blank: true, class: "project_scopes"}
+  = f.hidden_field :_destroy
+  = link_to "Удалить", '#', class: "remove_fields"

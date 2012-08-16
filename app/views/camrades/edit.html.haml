@@ -1,6 +1,6 @@
 %p{id: "notice"}= notice
 
-=form_for @camrade do |f| 
+=simple_form_for @camrade do |f| 
   .field
     = f.label :first_name, "Имя"
     = f.text_field :first_name
@@ -23,8 +23,6 @@
         - @resume = resume
         = f.fields_for(:resumes, @resume) do |builder|
           = render 'resume_fields', f: builder
-          
-    =link_to_add_fields "Добавить резюме", f, :resumes
   
   = f.submit "Готово"  
   

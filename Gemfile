@@ -7,7 +7,8 @@ gem 'paperclip'
 gem 'haml'
 
 gem 'pg'
-
+gem 'simple_form'
+gem 'gon'
 
 
 

@@ -50,15 +50,6 @@ reactivate_on_resume_add = ->
     changeMonth: true
     changeYear: true
     yearRange: "1900:2012"
-  
-  for select in $('.resume_scopes')
-    $(select).on 'change', ->
-      scope_id = $(this).children("option:selected").attr('value')
-      $(this).siblings('.specialization_names').attr('value', '')
-      options.source = (request, response) ->
-        $.getJSON "/specializations/#{scope_id}", {term: extractLast(request.term)}, response
-      $(this).siblings('.specialization_names').catcomplete(options).focus ->
-        $(this).catcomplete("search", '')
 
 jQuery ->
   reactivate_on_resume_add()

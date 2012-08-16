@@ -1,7 +1,7 @@
 class Camrade < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :first_name, :middle_name, :last_name, :birth_date, :sex
-  attr_accessible :resumes_attributes
+  attr_accessible :resumes_attributes, :specialization_ids
   has_many :contacts
   has_many :resumes
   has_many :services

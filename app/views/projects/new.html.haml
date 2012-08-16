@@ -2,16 +2,4 @@
 
 = render 'form'
 
-#project_specializations
-  = link_to 'Добавить необходимые области специализации', "#", id: "add_specializations"
-
-= form_for @project, remote: true do |f|
-  = f.text_field :title
-  = f.submit "Add"
-  
-  <form accept-charset="UTF-8" action="/projects" class="new_project" data-remote="true" id="new_project" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="hZw5I8YNbe0RThQRHucUEyntv4xlr8oUxg46G7+RLnw="></div>
-    <input id="project_title" name="project[title]" size="30" type="text">
-    <input name="commit" type="submit" value="Add">
-  </form>
-
 = link_to 'Back', projects_path

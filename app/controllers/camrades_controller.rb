@@ -16,10 +16,6 @@ class CamradesController < ApplicationController
   
   def edit
     @camrade = Camrade.find(params[:id])
-    if @camrade.resumes.blank?
-      @camrade.resumes << Resume.new
-    end
-    @scopes = Scope.order(:name)
   end
   
   def update

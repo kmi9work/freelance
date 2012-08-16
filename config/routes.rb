@@ -12,12 +12,13 @@ EotFreelance::Application.routes.draw do
   devise_for :camrades
   
   resources :camrades do
-    resource :resume
+    resources :resumes
     get 'show_messages'
   end
   resources :companies, only: [:index]
   resources :messages, only: [:show, :create]
   
+  match 'add_scope/:project_id' => 'specializations#add_scope', as: :add_scope
   match 'specializations/(:scope_id)' => 'specializations#index', as: :specializations
   match 'project/:id/add_scope' => 'projects#add_specialization', as: :project_add_specialization
   match 'project/:id/add_specialization' => 'projects#add_specialization', as: :project_add_specialization

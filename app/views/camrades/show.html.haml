@@ -23,6 +23,7 @@
         - resume.specializations.each do |spec|
           =spec.name
           %br
+      =link_to "Удалить резюме", camrade_resume_path(@camrade, resume), confirm: 'Вы уверены?', method: :delete
       / %strong{style: "text-decoration: underline"} Опыт работы
       /       %br
       / -# resume.experiences.each do |experience| 
@@ -34,5 +35,5 @@
       /           %br
       /           %strong Описание работы: 
       /           =# experience.description
-      
+  =link_to "Добавить резюме", new_camrade_resume_path(@camrade)
 = link_to 'Edit', edit_camrade_path(@camrade) 

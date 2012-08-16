@@ -2,6 +2,7 @@
 %html
   %head
     %title= yield :title
+    = include_gon
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -9,7 +10,7 @@
     .container-fluid
       #header.row-fluid
         #logo.span4
-          %h1= link_to "Биржа труда", root_path
+          %h1= link_to "Союз профессионалов", root_path
           %h5= link_to "Суть времени", root_path
         / #star_div.span2.pull-right
         /           = image_tag 'star.jpg', :id => 'star'
