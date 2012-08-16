@@ -42,9 +42,9 @@
   /     %br
   /     = f.number_field :city_id
   #project_specializations
-    = f.fields_for :projects_scopes do |builder|
-      = render 'projects_scopes_fields', f: builder
-  = link_to_add_fields 'Добавить необходимые области специализации', f, :projects_scopes
+    = f.fields_for :project_scopes do |builder|
+      = render 'project_scope_fields', f: builder
+  = link_to_add_fields 'Добавить необходимые области специализации', f, :project_scopes
       
       
     

@@ -6,7 +6,7 @@
   |
   %time= @project.created_at.strftime("%M:%H %d.%m.%Y")
 
-%p= @project.description
+.main_content= @project.description
 
 %fieldset
   %legend Необходимое количество участников
@@ -21,8 +21,13 @@
   %legend Временные рамки проекта
   = humanize_date_range @project.datetime_start, @project.datetime_end
 
-
-
+%fieldset
+  %legend Необходимые профессиональные навыки участников
+  - if @project.scopes.blank?
+    Нет ограничений
+  -else
+    - @project.scopes.each do |scope|
+      %strong= scope.name
 
 / %p
 /   <b>Completed:

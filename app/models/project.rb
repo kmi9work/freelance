@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  attr_accessible :city_id, :completed, :camrade_count, :camrade_id, :country_id, :datetime_end, :datetime_start, :description, :min_experience, :reserve_count, :title, :projects_scopes_attributes
+  attr_accessible :city_id, :completed, :camrade_count, :camrade_id, :country_id, :datetime_end, :datetime_start, :description, :min_experience, :reserve_count, :title, :project_scopes_attributes
   belongs_to :camrade
   has_many :requests
   has_many :comments

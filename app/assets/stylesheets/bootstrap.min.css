@@ -123,7 +123,7 @@ pre{display:block;padding:11.5px;margin:0 0 12px;font-size:12.025px;line-height:
 pre code{padding:0;color:inherit;background-color:transparent;border:0;}
 .pre-scrollable{max-height:340px;overflow-y:scroll;}
 .label,.badge{font-size:10.998px;font-weight:bold;line-height:14px;color:#ffffff;vertical-align:baseline;white-space:nowrap;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);background-color:#999999;}
-.label{padding:1px 4px 2px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
+.label{padding:1px 4px 2px;-webkit-border-radius:5px 5px 0px 0px;-moz-border-radius:5px 5px 0px 0px;border-radius:5px 5px 0px 0px;}
 .badge{padding:1px 9px 2px;-webkit-border-radius:9px;-moz-border-radius:9px;border-radius:9px;}
 a.label:hover,a.badge:hover{color:#ffffff;text-decoration:none;cursor:pointer;}
 .label-important,.badge-important{background-color:#b94a48;}

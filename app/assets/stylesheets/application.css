@@ -62,6 +62,16 @@ legend{
   margin-left: 10px;
 }
 
+.label{
+  padding:1px 4px 2px;-webkit-border-radius:5px 5px 0px 0px;-moz-border-radius:5px 5px 0px 0px;border-radius:5px 5px 0px 0px;
+}
+
+div.main_content{
+  padding: 5px;
+  background: #EEE;
+  border-radius: 0px 0px 5px 5px;
+}
+
 .ui-autocomplete {
 	max-height: 314px;
 	overflow-y: auto;

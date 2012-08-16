@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120815083250) do
+ActiveRecord::Schema.define(:version => 20120816172028) do
 
   create_table "camrades", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -108,6 +108,20 @@ ActiveRecord::Schema.define(:version => 20120815083250) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "project_scopes", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "scope_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "project_specializations", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "specialization_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -122,16 +136,6 @@ ActiveRecord::Schema.define(:version => 20120815083250) do
     t.integer  "camrade_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-  end
-
-  create_table "projects_scopes", :force => true do |t|
-    t.integer "project_id"
-    t.integer "scope_id"
-  end
-
-  create_table "projects_specializations", :force => true do |t|
-    t.integer "project_id"
-    t.integer "specialization_id"
   end
 
   create_table "requests", :force => true do |t|
