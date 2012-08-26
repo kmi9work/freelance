@@ -16,13 +16,8 @@
   .field
     = f.label :sex, "Пол"
     = f.select :sex, [["Мужской", true], ["Женский", false]]
-  %h3 Профессиональная деятельность
-  %p
-    - if @camrade.resumes
-      - @camrade.resumes.each do |resume|
-        - @resume = resume
-        = f.fields_for(:resumes, @resume) do |builder|
-          = render 'resume_fields', f: builder
-  
+  / .field
+  /   = f.label :about, "Обо мне"
+  /   = f.text_area :about, class: "input-400"
   = f.submit "Готово"  
   

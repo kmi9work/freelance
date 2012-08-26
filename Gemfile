@@ -10,7 +10,10 @@ gem 'pg'
 gem 'simple_form'
 gem 'gon'
 
+gem 'client_side_validations'
 
+gem 'pg_search'
+gem "will_paginate"
 
 
 

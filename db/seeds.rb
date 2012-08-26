@@ -1,7 +1,24 @@
 #encoding:utf-8
 
-cities = City.create([{name: "Москва"}, {name: "Челябинск"}, {name: "Кострома"}, {name: "Саратов"}, {name: "Мурманск"}, {name: "Иркутск"}])
-countries = Country.create([{name: "Россия"},{name: "СССР"},{name: "Украина"},{name: "Белорусия"},{name: "США"},{name: "Бразилия"}])
+country_file = File.open 'lib/data/countries.txt', 'r'
+city_russia_file = File.open 'lib/data/cities.txt', 'r'
+countries = []
+while country_file.gets
+  countries << Country.create({name: $_.strip})
+end
+
+cities = []
+while city_russia_file.gets
+  if $_ =~ /(.*)+ \((.+)\)/
+    region = Region.find_or_create_by_name($2.strip)
+    c = City.new({name: $1.strip})
+    c.region = region
+    c.country = Country.find_by_name('Россия')
+    c.save
+  else
+    next
+  end
+end
 
 prof_file = File.open('lib/data/proffessions.txt', 'r')
 

@@ -1,7 +1,10 @@
 EotFreelance::Application.routes.draw do  
   resources :services
 
-  resources :projects
+  resources :projects do
+    resources :scopes
+    resources :specializations
+  end
 
   devise_scope :camrade do
     get 'login', to: 'devise/sessions#new', as: :login

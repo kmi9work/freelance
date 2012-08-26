@@ -1,4 +1,4 @@
-= form_for(@project) do |f|
+= form_for @project, validate: true do |f|
   - if @project.errors.any?
     #error_explanation
       %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
@@ -42,9 +42,19 @@
   /     %br
   /     = f.number_field :city_id
   #project_specializations
-    = f.fields_for :project_scopes do |builder|
-      = render 'project_scope_fields', f: builder
-  = link_to_add_fields 'Добавить необходимые области специализации', f, :project_scopes
+    -if @scope_specs
+      - @scope_specs.each do |scope_id, scope_name_spec|
+        %div{id: "project_scope_#{scope_id}"}
+          %strong= scope_name_spec[0]
+          =link_to "x", project_scope_path(@project, scope_id), method: :delete, remote: true
+          %br
+          - scope_name_spec[1].each do |spec|
+            %div{id: "project_specialization_#{spec[0]}"}
+              = spec[1]
+              =link_to "x", project_specialization_path(@project, spec[0]), method: :delete, remote: true
+              %br
+                  
+    = link_to 'Добавить необходимые области специализации', '#', id: 'add_project_scope'
       
       
     

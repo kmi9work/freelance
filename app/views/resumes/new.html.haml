@@ -1,31 +1,4 @@
 .resume_field
   %h2 Создать резюме
-  = simple_form_for @resume, url: camrade_resumes_path(@resume.camrade_id) do |f|
-    = f.hidden_field :camrade_id
-    = f.input :title, label: "Заголовок"
-    = f.input :description, label: "Описание"
-    = f.label :scope_id, "Область"
-    = f.select :scope_id, @scopes.map{|s| [s.name, s.id]}, {include_blank: true}, {class: "resume_scopes"}
-    = f.label :specialization_names, "Специализации"
-    %table
-      %tr
-        %td{id: 'specializations1'}
-        %td{id: 'specializations2'}
-        %td{id: 'specializations3'}
-    / = f.association :specializations, as: :check_boxes,  collection: Specialization.all, promt: "Выберите специализации", class: "specialization_names"
-    = f.submit "Готово"
-    / - @resume.specializations.each do |spec|
-    /         %div{id: "delete_resume_#{@resume.id}_specialization_#{spec.id}"}
-    /           = spec.name
-    /           = link_to 'x', delete_resume_specialization_path(@resume.id, spec.id), remote: true
-    /           %br
-    / 
-    / %br
-    / -# if @resume.experiences
-    /       -# @resume.experiences.each do |experience|
-    /         =# f.fields_for :experiences, experience do |builder|
-    /           =# render 'experience_fields', f: builder
-    /=# link_to_add_fields "Добавить опыт работы", f, :experiences
-    
-    /   = link_to 'Удалить резюме', '#', class: 'remove_resume_fields'
-    / = link_to 'Восстановить резюме', '#', class: 'return_resume_fields', style: "display: none;"
+  = simple_form_for @resume, url: camrade_resumes_path(@resume.camrade_id) do |builder|
+    =render 'form', f: builder

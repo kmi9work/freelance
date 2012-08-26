@@ -22,9 +22,13 @@ class Resume < ActiveRecord::Base
     end
   end
   def specialization_ids= ids
+    specs = []
     ids.each do |id|
-      self.specializations << Specialization.find(id) unless id.blank?
+      specs << Specialization.find(id) unless id.blank?
     end
+    puts "======================="
+    p specs
+    self.specializations = specs.uniq
   end
   
   def specialization_ids

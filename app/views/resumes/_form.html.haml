@@ -1,0 +1,29 @@
+= f.hidden_field :camrade_id
+= f.input :title, label: "Заголовок"
+= f.input :description, label: "Описание"
+= f.label :scope_id, "Область"
+= f.select :scope_id, @scopes.map{|s| [s.name, s.id]}, {include_blank: true}, {class: "resume_scopes"}
+= f.label :specialization_names, "Специализации"
+- if @resume.scope
+  - size = @resume.scope.specializations.size
+  - specs1 = @resume.scope.specializations[0...size/3]
+  - specs2 = @resume.scope.specializations[size/3...2*size/3]
+  - specs3 = @resume.scope.specializations[2*size/3...size]
+  %table
+    %tr
+      %td{id: 'specializations1'}
+        - specs1.each do |spec|
+          %label{class: "checkbox"} 
+            = check_box_tag 'resume[specialization_ids][]', spec.id, @resume.specializations.include?(spec)
+            = spec.name
+      %td{id: 'specializations2'}
+        - specs2.each do |spec|
+          %label{class: "checkbox"} 
+            = check_box_tag 'resume[specialization_ids][]', spec.id, @resume.specializations.include?(spec)
+            = spec.name
+      %td{id: 'specializations3'}
+        - specs3.each do |spec|
+          %label{class: "checkbox"} 
+            = check_box_tag 'resume[specialization_ids][]', spec.id, @resume.specializations.include?(spec)
+            = spec.name
+= f.submit "Готово"

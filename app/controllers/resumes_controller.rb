@@ -21,6 +21,24 @@ class ResumesController < ApplicationController
       end
     end
   end
+  
+  def edit
+    @resume = Resume.find(params[:id])
+    gon.specializations = Specialization.all
+    @scopes = Scope.all
+  end
+  def update
+    @resume = Resume.find(params[:id])
+    respond_to do |format|
+      if @resume.update_attributes(params[:resume])
+        format.html { redirect_to @resume.camrade, notice: 'Resume was successfully created.' }
+        format.json { render json: @resume, status: :created, location: @resume }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end
+  end
   def destroy
     camrade = Camrade.find(params[:camrade_id])
     @resume = Resume.find(params[:id])

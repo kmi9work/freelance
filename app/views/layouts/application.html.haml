@@ -10,8 +10,7 @@
     .container-fluid
       #header.row-fluid
         #logo.span4
-          / %h1= link_to "Союз профессионалов", root_path
-          /           %h5= link_to "Суть времени", root_path
+          = link_to "<h1>Союз профессионалов</h1><h5>Суть времени</h5>".html_safe, root_path
         / #star_div.span2.pull-right
         /           = image_tag 'star.jpg', :id => 'star'
       .row-fluid
@@ -44,9 +43,5 @@
                   
       .row-fluid
         .container-fluid{style: "padding: 0px 20px"}
-          %p
-            Click on "
-            %em> New Product
-            " to add a product in your catalog.
           = yield
     

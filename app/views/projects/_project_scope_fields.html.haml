@@ -1,4 +1,12 @@
 %fieldset
-  = f.select :scope_id, options_from_collection_for_select(@scopes, "id", "name"), {include_blank: true, class: "project_scopes"}
-  = f.hidden_field :_destroy
+  = select_tag "project[project_scope_ids][#{id}][scope_id]",
+              options_from_collection_for_select(@scopes, "id", "name", ps.scope_id),
+              {include_blank: true, class: "project_scopes"}
+  = hidden_field_tag "project[project_scope_ids][#{id}][_destroy]", false
   = link_to "Удалить", '#', class: "remove_fields"
+  %table{class: 'specializations'}
+    %tr
+      %td{class: 'specializations1'}
+      %td{class: 'specializations2'}
+      %td{class: 'specializations3'}
+  

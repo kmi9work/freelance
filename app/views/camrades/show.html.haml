@@ -24,6 +24,7 @@
           =spec.name
           %br
       =link_to "Удалить резюме", camrade_resume_path(@camrade, resume), confirm: 'Вы уверены?', method: :delete
+      =link_to 'Редактировать', edit_camrade_resume_path(@camrade, resume)
       / %strong{style: "text-decoration: underline"} Опыт работы
       /       %br
       / -# resume.experiences.each do |experience| 

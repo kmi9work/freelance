@@ -1,0 +1,4 @@
+.resume_field
+  %h2 Отредактировать резюме
+  = simple_form_for @resume, url: camrade_resume_path(@resume.camrade_id, @resume) do |builder|
+    =render 'form', f: builder

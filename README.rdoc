@@ -1,3 +1,17 @@
+=TODO
+
+
+- Страна и город. Везде.
+- Расширенный поиск
+- разкомментить camrade - about
+- Поиск по камрадам(резюме) и проектам
+- Ограничения доступа
+- request & comment
+- scope, specs -- uniq
+- Услуги
+
+- Переделать Project.project_scope_ids=
+
 =Проект фриланса СВ
 
 http://freelance.uao.su/

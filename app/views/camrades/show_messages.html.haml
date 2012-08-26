@@ -2,7 +2,7 @@
 
 %h2 Принятые сообщения
 - @messages.each do |message|
-  .row-fluid.message{class: "#{if message.unread then "unread" end}"}
+  .row-fluid.camrade_message{class: "#{if message.unread then "unread" end}"}
     .span2
       %strong= link_to message.from.name, camrade_path(message.from)
     .span6
@@ -15,7 +15,7 @@
   
 %h2 Отправленные сообщения
 - @sents.each do |sent|
-  .row-fluid.message{class: "#{if sent.unread then "unread" end}"}
+  .row-fluid.camrade_message{class: "#{if sent.unread then "unread" end}"}
     .span2
       %strong= link_to sent.from.name, camrade_path(sent.from)
     .span6

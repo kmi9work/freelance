@@ -1,0 +1,24 @@
+=content_for :navbar do
+  %li{:class => 'active'}
+    =link_to 'Камрады', camrades_path
+  %li
+    =link_to 'Услуги', services_path
+  %li
+    =link_to 'Проекты', projects_path
+%h1 Камрады
+%hr
+.row
+  .span#search
+    = text_field_tag :search
+    %br
+    = link_to 'Расширенный поиск', '/'
+.row
+  .span#camrades
+    - @camrades.each do |camrade| 
+      = camrade.name
+      = link_to 'Show', camrade
+      = link_to 'Edit', edit_project_path(camrade)
+      = link_to 'Destroy', camrade, confirm: 'Вы уверены?', method: :delete
+      %br 
+      
+      

@@ -26,8 +26,14 @@
   - if @project.scopes.blank?
     Нет ограничений
   -else
-    - @project.scopes.each do |scope|
-      %strong= scope.name
+    - @scope_specs.each do |scope_id, scope_name_spec|
+      %div{id: "project_scope_#{scope_id}"}
+        %strong= scope_name_spec[0]
+        %br
+        - scope_name_spec[1].each do |spec|
+          %div{id: "project_specialization_#{spec[0]}"}
+            = spec[1]
+            %br
 
 / %p
 /   <b>Completed:

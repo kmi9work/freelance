@@ -9,11 +9,19 @@
 = link_to 'New Project', new_project_path
 
 %h1 Проекты
+
+= form_tag projects_path, method: :get do
+  %p
+    = text_field_tag :query, params[:query]
+    = button_tag "Искать", name: nil 
+  / =link_to 'расширенный поиск', new_search_path
+    
 - @projects.each do |project| 
   %fieldset
-    = project.title
+    = link_to project.title, project
+    = project.description[0..128]
     = link_to 'Show', project
     = link_to 'Edit', edit_project_path(project)
     = link_to 'Destroy', project, confirm: 'Вы уверены?', method: :delete
 
-
+= will_paginate @projects

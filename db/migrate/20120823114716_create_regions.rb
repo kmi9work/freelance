@@ -1,8 +1,9 @@
-class CreateCities < ActiveRecord::Migration
+class CreateRegions < ActiveRecord::Migration
   def change
-    create_table :cities do |t|
+    create_table :regions do |t|
       t.string :name
       t.integer :country_id
+
       t.timestamps
     end
   end

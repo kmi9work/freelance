@@ -40,6 +40,7 @@ class DeviseCreateCamrades < ActiveRecord::Migration
       t.boolean :sex
       t.integer :country_id
       t.integer :city_id
+      t.text :about
 
       t.timestamps
     end
