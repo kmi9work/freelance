@@ -13,6 +13,12 @@
 
 ActiveRecord::Schema.define(:version => 20120823114716) do
 
+  create_table "areas", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "camrades", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -57,7 +63,7 @@ ActiveRecord::Schema.define(:version => 20120823114716) do
   create_table "companies", :force => true do |t|
     t.string   "name"
     t.string   "site"
-    t.integer  "scope_id"
+    t.integer  "area_id"
     t.integer  "city_id"
     t.integer  "country_id"
     t.datetime "created_at", :null => false
@@ -110,9 +116,9 @@ ActiveRecord::Schema.define(:version => 20120823114716) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "project_scopes", :force => true do |t|
+  create_table "project_areas", :force => true do |t|
     t.integer  "project_id", :null => false
-    t.integer  "scope_id",   :null => false
+    t.integer  "area_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -161,7 +167,7 @@ ActiveRecord::Schema.define(:version => 20120823114716) do
     t.text     "description"
     t.string   "title"
     t.integer  "camrade_id"
-    t.integer  "scope_id"
+    t.integer  "area_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -171,16 +177,10 @@ ActiveRecord::Schema.define(:version => 20120823114716) do
     t.integer "specialization_id"
   end
 
-  create_table "scopes", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "services", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "scope_id"
+    t.integer  "area_id"
     t.integer  "camrade_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
@@ -188,7 +188,7 @@ ActiveRecord::Schema.define(:version => 20120823114716) do
 
   create_table "specializations", :force => true do |t|
     t.string   "name"
-    t.integer  "scope_id"
+    t.integer  "area_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
