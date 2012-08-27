@@ -18,7 +18,7 @@ render_specializations = (specializations)->
     i += 1
 
 jQuery ->
-  $('#resume_scope_id').on 'change', ->
-    scope_id = $(this).children("option:selected").attr('value')
-    $.get "/specializations/#{scope_id}", (specs) ->
+  $('#resume_area_id').on 'change', ->
+    area_id = $(this).children("option:selected").attr('value')
+    $.get "/specializations/#{area_id}", (specs) ->
       render_specializations(specs)

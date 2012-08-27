@@ -6,31 +6,34 @@
   |
   %time= @project.created_at.strftime("%M:%H %d.%m.%Y")
 
-.main_content= @project.description
+.main_content= raw @project.description
 
-%fieldset
-  %legend Необходимое количество участников
-  Всего: 
-  = @project.camrade_count
-  
-  Запасных:
-  = @project.reserve_count
+- if @project.camrade_count.present? or @project.reserve_count.present?
 
+  %fieldset
+    %legend Необходимое количество участников
+    - if @project.camrade_count.present?
+      Всего: 
+      = @project.camrade_count
+    - if @project.reserve_count.present?
+      Запасных:
+      = @project.reserve_count
 
-%fieldset
-  %legend Временные рамки проекта
-  = humanize_date_range @project.datetime_start, @project.datetime_end
+- if @project.datetime_start.present? or @project.datetime_end.present?
+  %fieldset
+    %legend Временные рамки проекта
+    = humanize_date_range @project.datetime_start, @project.datetime_end
 
 %fieldset
   %legend Необходимые профессиональные навыки участников
-  - if @project.scopes.blank?
+  - if @project.areas.blank?
     Нет ограничений
   -else
-    - @scope_specs.each do |scope_id, scope_name_spec|
-      %div{id: "project_scope_#{scope_id}"}
-        %strong= scope_name_spec[0]
+    - @area_specs.each do |area_id, area_name_spec|
+      %div{id: "project_area_#{area_id}"}
+        %strong= area_name_spec[0]
         %br
-        - scope_name_spec[1].each do |spec|
+        - area_name_spec[1].each do |spec|
           %div{id: "project_specialization_#{spec[0]}"}
             = spec[1]
             %br

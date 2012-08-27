@@ -42,19 +42,19 @@
   /     %br
   /     = f.number_field :city_id
   #project_specializations
-    -if @scope_specs
-      - @scope_specs.each do |scope_id, scope_name_spec|
-        %div{id: "project_scope_#{scope_id}"}
-          %strong= scope_name_spec[0]
-          =link_to "x", project_scope_path(@project, scope_id), method: :delete, remote: true
+    -if @area_specs
+      - @area_specs.each do |area_id, area_name_spec|
+        %div{id: "project_area_#{area_id}"}
+          %strong= area_name_spec[0]
+          =link_to "x", project_area_path(@project, area_id), method: :delete, remote: true
           %br
-          - scope_name_spec[1].each do |spec|
+          - area_name_spec[1].each do |spec|
             %div{id: "project_specialization_#{spec[0]}"}
               = spec[1]
               =link_to "x", project_specialization_path(@project, spec[0]), method: :delete, remote: true
               %br
                   
-    = link_to 'Добавить необходимые области специализации', '#', id: 'add_project_scope'
+    = link_to 'Добавить необходимые области специализации', '#', id: 'add_project_area'
       
       
     

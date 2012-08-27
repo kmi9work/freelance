@@ -14,13 +14,13 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-    @scope_specs = {}
+    @area_specs = {}
     @project.specializations.each do |spec|
-      @scope_specs[spec.scope.id] ||= [spec.scope.name, []]
-      @scope_specs[spec.scope.id][1] << [spec.id, spec.name]
+      @area_specs[spec.area.id] ||= [spec.area.name, []]
+      @area_specs[spec.area.id][1] << [spec.id, spec.name]
     end
-    @project.scopes.each do |scope|
-      @scope_specs[scope.id] ||= [scope.name, []]
+    @project.areas.each do |area|
+      @area_specs[area.id] ||= [area.name, []]
     end
     respond_to do |format|
       format.html # show.html.erb
@@ -32,9 +32,9 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project = Project.new
-    @scopes = Scope.all
-    gon.scopes = @scopes
-    gon.scope_id = ProjectScope.last.id + 1
+    @areas = Area.all
+    gon.areas = @areas
+    gon.area_id = ProjectArea.last.id + 1
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @project }
@@ -44,17 +44,17 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
-    @scopes = Scope.all
-    @scope_specs = {}
+    @areas = Area.all
+    @area_specs = {}
     @project.specializations.each do |spec|
-      @scope_specs[spec.scope.id] ||= [spec.scope.name, []]
-      @scope_specs[spec.scope.id][1] << [spec.id, spec.name]
+      @area_specs[spec.area.id] ||= [spec.area.name, []]
+      @area_specs[spec.area.id][1] << [spec.id, spec.name]
     end
-    @project.scopes.each do |scope|
-      @scope_specs[scope.id] ||= [scope.name, []]
+    @project.areas.each do |area|
+      @area_specs[area.id] ||= [area.name, []]
     end
-    gon.scopes = @scopes
-    gon.scope_id = ProjectScope.last.id + 1
+    gon.areas = @areas
+    gon.area_id = ProjectArea.last.id + 1
   end
 
   # POST /projects
@@ -69,7 +69,7 @@ class ProjectsController < ApplicationController
         format.json { render json: @project, status: :created, location: @project }
       else
         format.html do
-          @scopes = Scope.all
+          @areas = Area.all
           render action: "new"
         end
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -105,7 +105,7 @@ class ProjectsController < ApplicationController
     end
   end
   
-  def add_scopes
+  def add_areas
     @project = Project.find(params[:id])
   end
   

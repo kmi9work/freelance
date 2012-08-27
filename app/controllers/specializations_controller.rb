@@ -1,13 +1,13 @@
 class SpecializationsController < ApplicationController
   def index
-    if params[:scope_id]
-      @specializations = Specialization.order(:name).where("scope_id = ? and name ilike ?", params[:scope_id], "%#{params[:term]}%")
+    if params[:area_id]
+      @specializations = Specialization.order(:name).where("area_id = ? and name ilike ?", params[:area_id], "%#{params[:term]}%")
       render json: @specializations
     else
       render json: []
     end
   end
-  def add_scope
+  def add_area
   end
   def destroy
     if params[:project_id]

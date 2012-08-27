@@ -7,7 +7,7 @@ class ResumesController < ApplicationController
   def new
     @resume = Resume.new(camrade_id: params[:camrade_id])
     gon.specializations = Specialization.all
-    @scopes = Scope.all
+    @areas = Area.all
   end
   def create
     @resume = Resume.new(params[:resume])
@@ -25,7 +25,7 @@ class ResumesController < ApplicationController
   def edit
     @resume = Resume.find(params[:id])
     gon.specializations = Specialization.all
-    @scopes = Scope.all
+    @areas = Area.all
   end
   def update
     @resume = Resume.find(params[:id])

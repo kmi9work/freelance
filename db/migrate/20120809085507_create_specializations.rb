@@ -2,7 +2,7 @@ class CreateSpecializations < ActiveRecord::Migration
   def change
     create_table :specializations do |t|
       t.string :name
-      t.integer :scope_id
+      t.integer :area_id
 
       t.timestamps
     end

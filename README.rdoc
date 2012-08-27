@@ -7,10 +7,10 @@
 - Поиск по камрадам(резюме) и проектам
 - Ограничения доступа
 - request & comment
-- scope, specs -- uniq
+- area, specs -- uniq
 - Услуги
 
-- Переделать Project.project_scope_ids=
+- Переделать Project.project_area_ids=
 
 =Проект фриланса СВ
 
@@ -260,6 +260,16 @@ image:class_diag.png[Диаграмма классов]
 - HTTPS
 
 - PostgreSQL(на первое время JustOneDB)
+
+
+=Вопросы:
+
+Как обеспечить посещаемость?
+
+Описать поддержку.
+
+
+
 
 
 

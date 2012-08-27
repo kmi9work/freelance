@@ -2,7 +2,7 @@ EotFreelance::Application.routes.draw do
   resources :services
 
   resources :projects do
-    resources :scopes
+    resources :areas
     resources :specializations
   end
 
@@ -21,9 +21,9 @@ EotFreelance::Application.routes.draw do
   resources :companies, only: [:index]
   resources :messages, only: [:show, :create]
   
-  match 'add_scope/:project_id' => 'specializations#add_scope', as: :add_scope
-  match 'specializations/(:scope_id)' => 'specializations#index', as: :specializations
-  match 'project/:id/add_scope' => 'projects#add_specialization', as: :project_add_specialization
+  match 'add_area/:project_id' => 'specializations#add_area', as: :add_area
+  match 'specializations/(:area_id)' => 'specializations#index', as: :specializations
+  match 'project/:id/add_area' => 'projects#add_specialization', as: :project_add_specialization
   match 'project/:id/add_specialization' => 'projects#add_specialization', as: :project_add_specialization
   
   match 'resume/:id/specialization/:specialization_id/delete' => 'resumes#delete_resume_specialization', as: :delete_resume_specialization

@@ -8,22 +8,22 @@ rails g model country name:string
 sleep 3
 rails g model city name:string
 sleep 3
-rails g model scope name:string
+rails g model area name:string
 sleep 3
-rails g model specialization name:string scope_id:integer
+rails g model specialization name:string area_id:integer
 sleep 3
 rails g model experience date_start:date date_end:date description:text position_id:integer company_id:integer resume_id:integer
 sleep 3
 rails g model position name:string
 
-rails g model company name:string site:string scope_id:integer city_id:integer country_id:integer
+rails g model company name:string site:string area_id:integer city_id:integer country_id:integer
 sleep 3
 rails g model language_level level:integer language_id:integer
 sleep 3
 rails g model language name:string 
 sleep 3
 
-rails g scaffold service title:string description:text scope_id:integer camrade_id:integer
+rails g scaffold service title:string description:text area_id:integer camrade_id:integer
 sleep 3
 rails g model request message:text member:boolean reserve:boolean camrade_id:integer project_id:integer
 sleep 3
@@ -31,6 +31,6 @@ rails g model comment content:text camrade_id:integer project_id:integer
 sleep 3
 
 rails g migration create_resumes_specializations_join_table
-rails g migration create_resumes_scopes_join_table
+rails g migration create_resumes_areas_join_table
 rails g migration create_projects_specializations_join_table
-rails g migration create_projects_scopes_join_table
+rails g migration create_projects_areas_join_table

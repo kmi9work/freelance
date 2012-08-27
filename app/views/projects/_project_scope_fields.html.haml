@@ -1,8 +1,8 @@
 %fieldset
-  = select_tag "project[project_scope_ids][#{id}][scope_id]",
-              options_from_collection_for_select(@scopes, "id", "name", ps.scope_id),
-              {include_blank: true, class: "project_scopes"}
-  = hidden_field_tag "project[project_scope_ids][#{id}][_destroy]", false
+  = select_tag "project[project_area_ids][#{id}][area_id]",
+              options_from_collection_for_select(@areas, "id", "name", ps.area_id),
+              {include_blank: true, class: "project_areas"}
+  = hidden_field_tag "project[project_area_ids][#{id}][_destroy]", false
   = link_to "Удалить", '#', class: "remove_fields"
   %table{class: 'specializations'}
     %tr

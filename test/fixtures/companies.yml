@@ -3,13 +3,13 @@
 one:
   name: MyString
   site: MyString
-  scope_id: 1
+  area_id: 1
   city_id: 1
   country_id: 1
 
 two:
   name: MyString
   site: MyString
-  scope_id: 1
+  area_id: 1
   city_id: 1
   country_id: 1

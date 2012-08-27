@@ -18,7 +18,7 @@
       %p
         = resume.description
       %p
-        %strong= resume.scope.name if resume.scope
+        %strong= resume.area.name if resume.area
         %br
         - resume.specializations.each do |spec|
           =spec.name

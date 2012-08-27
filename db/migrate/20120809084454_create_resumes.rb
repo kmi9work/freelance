@@ -4,7 +4,7 @@ class CreateResumes < ActiveRecord::Migration
       t.text :description
       t.string :title
       t.integer :camrade_id
-      t.integer :scope_id
+      t.integer :area_id
       
       t.timestamps
     end

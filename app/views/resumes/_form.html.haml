@@ -1,14 +1,14 @@
 = f.hidden_field :camrade_id
 = f.input :title, label: "Заголовок"
 = f.input :description, label: "Описание"
-= f.label :scope_id, "Область"
-= f.select :scope_id, @scopes.map{|s| [s.name, s.id]}, {include_blank: true}, {class: "resume_scopes"}
+= f.label :area_id, "Область"
+= f.select :area_id, @areas.map{|s| [s.name, s.id]}, {include_blank: true}, {class: "resume_areas"}
 = f.label :specialization_names, "Специализации"
-- if @resume.scope
-  - size = @resume.scope.specializations.size
-  - specs1 = @resume.scope.specializations[0...size/3]
-  - specs2 = @resume.scope.specializations[size/3...2*size/3]
-  - specs3 = @resume.scope.specializations[2*size/3...size]
+- if @resume.area
+  - size = @resume.area.specializations.size
+  - specs1 = @resume.area.specializations[0...size/3]
+  - specs2 = @resume.area.specializations[size/3...2*size/3]
+  - specs3 = @resume.area.specializations[2*size/3...size]
   %table
     %tr
       %td{id: 'specializations1'}

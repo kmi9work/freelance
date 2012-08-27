@@ -17,9 +17,10 @@
   / =link_to 'расширенный поиск', new_search_path
     
 - @projects.each do |project| 
-  %fieldset
+  %p
     = link_to project.title, project
-    = project.description[0..128]
+    %br
+    = Sanitize.clean project.description[0..128]
     = link_to 'Show', project
     = link_to 'Edit', edit_project_path(project)
     = link_to 'Destroy', project, confirm: 'Вы уверены?', method: :delete

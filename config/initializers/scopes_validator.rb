@@ -1,4 +1,4 @@
-class ScopesValidator < ActiveModel::EachValidator
+class AreasValidator < ActiveModel::EachValidator
   def validate_each(record, attr_name, value)
     
   end

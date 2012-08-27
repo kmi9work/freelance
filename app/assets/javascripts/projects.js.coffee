@@ -3,10 +3,10 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 refresh_select = ->
-  $('.project_scopes').on 'change', ->
-    scope_id = $(this).children("option:selected").attr('value')
+  $('.project_areas').on 'change', ->
+    area_id = $(this).children("option:selected").attr('value')
     table = this
-    $.get "/specializations/#{scope_id}", (specs) ->
+    $.get "/specializations/#{area_id}", (specs) ->
       render_specializations($(table).siblings('table.specializations'), specs)
 
 render_specializations = (table, specializations)->
@@ -30,13 +30,13 @@ jQuery ->
     $(input).datetimepicker
       dateFormat: 'dd.mm.yy'
   refresh_select()
-  $('#add_project_scope').on 'click', ->
+  $('#add_project_area').on 'click', ->
     $(this).before "
       <fieldset>
-        <select class=\"project_scopes\" id=\"project_project_scope_ids_#{gon.scope_id}_scope_id\" name=\"project[project_scope_ids][#{gon.scope_id}][scope_id]\">
+        <select class=\"project_areas\" id=\"project_project_area_ids_#{gon.area_id}_area_id\" name=\"project[project_area_ids][#{gon.area_id}][area_id]\">
         <option value=\"\" selected=\"selected\"></option>
-        #{for scope in gon.scopes then "<option value=\"#{scope.id}\">#{scope.name}</option>"}
-        <input id=\"project_project_scope_ids_#{gon.scope_id}__destroy\" name=\"project[project_scope_ids][#{gon.scope_id}][_destroy]\" type=\"hidden\" value=\"false\">
+        #{for area in gon.areas then "<option value=\"#{area.id}\">#{area.name}</option>"}
+        <input id=\"project_project_area_ids_#{gon.area_id}__destroy\" name=\"project[project_area_ids][#{gon.area_id}][_destroy]\" type=\"hidden\" value=\"false\">
         <a href=\"#\" class=\"remove_fields\">Удалить</a>
         <table class=\"specializations\">
           <tbody><tr>
@@ -46,6 +46,6 @@ jQuery ->
           </tr></tbody>
         </table>    
       </fieldset>"
-    gon.scope_id += 1
+    gon.area_id += 1
     refresh_select()
     false
