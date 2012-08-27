@@ -8,8 +8,10 @@ class Camrade < ActiveRecord::Base
   has_many :requests
   has_many :comments
   has_many :projects
+  has_many :contacts
   belongs_to :country
   belongs_to :city
+
   
   has_many :messages, :class_name => "Message", :foreign_key => "to_id"
   has_many :sents, :class_name => "Message", :foreign_key => "from_id"
