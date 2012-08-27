@@ -15,7 +15,7 @@ class Project < ActiveRecord::Base
   # accepts_nested_attributes_for :project_areas, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
   
   include PgSearch
-  pg_search_area :search, against: [:title, :description],
+  pg_search_scope :search, against: [:title, :description],
                   using: {tsearch: {dictionary: "russian"}}
                   
   def project_area_ids= ids
@@ -50,7 +50,7 @@ class Project < ActiveRecord::Base
     if query.present?
       search(query)
     else
-      aread
+      scoped
     end
   end
   
