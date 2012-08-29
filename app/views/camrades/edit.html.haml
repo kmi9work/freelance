@@ -1,6 +1,6 @@
 %p{id: "notice"}= notice
 
-=simple_form_for @camrade do |f| 
+=form_for @camrade do |f| 
   .field
     = f.label :first_name, "Имя"
     = f.text_field :first_name
@@ -16,6 +16,11 @@
   .field
     = f.label :sex, "Пол"
     = f.select :sex, [["Мужской", true], ["Женский", false]]
+  .field
+    Контакты
+    = f.fields_for :contacts do |builder|
+      = render 'contact_fields', f: builder
+    = link_to_add_fields "Добавить контакт", f, :contacts
   / .field
   /   = f.label :about, "Обо мне"
   /   = f.text_area :about, class: "input-400"

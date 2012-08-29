@@ -19,6 +19,7 @@ end
 puts "Countries: #{countries.size}"
 cities = []
 country = Country.find_by_name('Россия')
+
 while city_russia_file.gets
   if $_ =~ /(.*) \((.+)\)/u
     region = Region.find_or_create_by_name($2.strip)
@@ -26,10 +27,6 @@ while city_russia_file.gets
     c.region = region
     c.country = country
     c.save
-    rand(contacts.size).times do
-      cont = contacts.to_a[rand(contacts.size)]
-      Contact.create(name: cont[0], value: cont[1][rand(cont[1].size)])
-    end
     cities << c
   else
     next
@@ -54,14 +51,22 @@ while prof_file.gets
   end
 end
 
-camrades = []
+contact_types = []
+contacts.each do |key, value|
+  contact_types << ContactType.create(name: key)
+end 
 
+camrades = []
 10.times do |i|
   c = Camrade.create(:first_name => names[rand(names.size)], :last_name => last_names[rand(last_names.size)], :email => "camrade#{i}@eot.su", :password => "camrade#{i}", :password_confirmation => "camrade#{i}", sex: rand(2))
   c.country = country
   c.city = cities[rand(cities.size)]
+  rand(contacts.size).times do
+    cont = contacts.to_a[rand(contacts.size)]
+    contact = Contact.create(value: cont[1][rand(cont[1].size)], contact_type_id: ContactType.find_by_name(cont[0]).id)
+    c.contacts << contact
+  end
   c.save
-  
   camrades << c
 end
 
