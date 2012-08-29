@@ -58,24 +58,16 @@ jQuery ->
     $(input).bind("keydown", (event) ->
       event.preventDefault()  if event.keyCode is $.ui.keyCode.TAB and $(this).data("autocomplete").menu.active
     ).catcomplete options
-      
-  $('form').on 'click', '.return_resume_fields', (event) ->
-    $(this).prev('fieldset').children('input[type=hidden]').val('0')
-    $(this).prev('fieldset').toggle()
-    $(this).toggle()
-    event.preventDefault()
-  
-  $('form').on 'click', '.remove_resume_fields', (event) ->
+        
+  $('form').on 'click', '.remove_fields', (event) ->
     $(this).prev('input[type=hidden]').val('1')
-    $(this).closest('.resume_field').children('.return_resume_fields').toggle()
-    $(this).closest('fieldset').toggle()
+    $(this).closest('fieldset').hide()
     event.preventDefault()
 
   $('form').on 'click', '.add_fields', (event) ->
     time = new Date().getTime()
     regexp = new RegExp($(this).data('id'), 'g')
     $(this).before($(this).data('fields').replace(regexp, time))
-    reactivate_on_resume_add
     event.preventDefault()
 
 

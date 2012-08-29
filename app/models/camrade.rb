@@ -1,8 +1,7 @@
 class Camrade < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :first_name, :middle_name, :last_name, :birth_date, :sex
-  attr_accessible :resumes_attributes, :specialization_ids
-  has_many :contacts
+  attr_accessible :resumes_attributes, :specialization_ids, :contacts_attributes
   has_many :resumes
   has_many :services
   has_many :requests
@@ -16,7 +15,7 @@ class Camrade < ActiveRecord::Base
   has_many :messages, :class_name => "Message", :foreign_key => "to_id"
   has_many :sents, :class_name => "Message", :foreign_key => "from_id"
   
-  accepts_nested_attributes_for :resumes, :allow_destroy => true, :reject_if => proc { |obj| obj.blank? }
+  accepts_nested_attributes_for :contacts, :allow_destroy => true
   
   
   # Include default devise modules. Others available are:

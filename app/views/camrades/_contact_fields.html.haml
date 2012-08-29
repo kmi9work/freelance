@@ -1,0 +1,5 @@
+%fieldset
+  = f.select :contact_type_id, ContactType.all.map{|i| [i.name, i.id]}
+  = f.text_field :value
+  = f.hidden_field :_destroy
+  = link_to "remove", '#', class: "remove_fields"
