@@ -41,6 +41,7 @@ class ServicesController < ApplicationController
   # POST /services.json
   def create
     @service = Service.new(params[:service])
+    @service.camrade = current_camrade
 
     respond_to do |format|
       if @service.save
