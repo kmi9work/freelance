@@ -7,6 +7,7 @@ gem 'paperclip'
 gem 'haml'
 
 gem 'pg'
+gem 'mysql2', :group => :wild
 gem 'simple_form'
 gem 'gon'
 

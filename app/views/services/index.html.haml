@@ -6,27 +6,20 @@
   %li
     =link_to 'Проекты', projects_path
 
-%h1 Здесь пока ничего не работает.
+%h1 Услуги
 
-%hr
+= form_tag services_path, method: :get do
+  %p
+    = text_field_tag :query, params[:query]
+    = button_tag "Искать", name: nil
 
-.row
-  .span6
-    #search
-      = text_field_tag :search, "service"
-      %br
-      = link_to 'Расширенный поиск', '/'
-    #results
-      Результаты:
-      %br
-      1, 2, 3, ...
-  .span6
-    - @services.each do |service| 
-      .row
-        .span
-          = service.title
-          = link_to 'Show', service
-          = link_to 'Edit', edit_service_path(service)
-          = link_to 'Destroy', service, confirm: 'Are you sure?', method: :delete
+- @services.each do |service|
+  %p
+    = link_to service.title, service
+    %br
+    = Sanitize.clean service.description[0..128]
+    = link_to 'Show', service
+    = link_to 'Edit', edit_service_path(service)
+    = link_to 'Destroy', service, confirm: 'Вы уверены?', method: :delete
 
-    = link_to 'New Service', new_service_path
+= link_to 'New Service', new_service_path
